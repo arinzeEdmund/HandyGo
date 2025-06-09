@@ -1,0 +1,17 @@
+export const QUERY_KEYS = {
+  JOIN_WAITLIST: "join-waitlist",
+  FETCH_KYC_STATUS: "fetch-kyc-status",
+  FETCH_TICKETS: "fetch-tickets",
+  USER_NOTIFICATIONS: "fetch-user-notification",
+  ACTIVE_BANKS: "fetch-active-banks",
+  CURRENCY_PORTFOLIO: "fetch-currency-portfolio",
+  SINGLE_ASSET_TRANSACTIONS: "single-asset-transactions",
+  ALL_TRANSACTIONS: "all-transactions",
+  SUPPORTED_NETWORK: "fetch-supported-network",
+  GET_WALLET: "get-wallet",
+  GET_USER_BY_EMAIL: "get-user-by-email",
+  GET_TRANSACTION_RECIPT: "get-transaction-reciepts",
+  BENEFICIARIES: "get-beneficiaries",
+  GET_RATE: "get-rate",
+  REGISTER: "register",
+} as const;
