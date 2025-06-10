@@ -12,7 +12,7 @@ module.exports = {
         poppinsExtraBold: "Poppins_800ExtraBold",
       },
       colors: {
-        primaryColor: "#339b4f",
+        primaryColor: "#55b535",
       },
       fontSize: {
         normal: "16px",

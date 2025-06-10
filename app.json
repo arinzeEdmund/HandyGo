@@ -4,12 +4,22 @@
     "slug": "Handygo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/mainLogo.png",
     "scheme": "handygo",
     "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splashIOS.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "splash": {
+        "image": "./assets/images/splashIOS.png",
+        "resizeMode": "cover",
+        "backgroundColor": "#ffffff"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -28,7 +38,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"

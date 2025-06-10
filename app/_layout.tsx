@@ -1,29 +1,86 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { ReactQueryProvider } from "@/lib/providers/react-query-provider";
+import { setCurrentPathname } from "@/utils/pathTracker";
+import {
+  Poppins_300Light,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_800ExtraBold,
+  useFonts,
+} from "@expo-google-fonts/poppins";
+import { BlurView } from "expo-blur";
+import { Slot, usePathname } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useEffect, useRef, useState } from "react";
+import { Alert, AppState, StyleSheet, View } from "react-native";
+import { RootSiblingParent } from "react-native-root-siblings";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+const RootLayout = () => {
+  const [loaded, error] = useFonts({
+    Poppins_400Regular,
+    Poppins_300Light,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+    Poppins_700Bold,
+    Poppins_800ExtraBold,
   });
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
+  const appState = useRef(AppState.currentState);
+  const [isBlurred, setIsBlurred] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setCurrentPathname(pathname);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+    if (error) {
+      Alert.alert(error.name, error.message);
+    }
+  }, [loaded, error]);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      if (nextAppState === "background" || nextAppState === "inactive") {
+        setIsBlurred(true);
+      } else {
+        setIsBlurred(false);
+      }
+      appState.current = nextAppState;
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
+  if (!loaded && !error) {
     return null;
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <ReactQueryProvider>
+      <RootSiblingParent>
+        <View style={{ flex: 1 }}>
+          <Slot />
+          {isBlurred && (
+            <BlurView
+              intensity={100}
+              tint="dark"
+              style={{
+                ...StyleSheet.absoluteFillObject,
+                zIndex: 100,
+              }}
+            />
+          )}
+        </View>
+      </RootSiblingParent>
+    </ReactQueryProvider>
   );
-}
+};
+
+export default RootLayout;
