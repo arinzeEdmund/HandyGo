@@ -69,7 +69,7 @@ const CustomInput = React.forwardRef<TextInput, CustomInputProps>(
         {label && (
           <Text
             style={labelStyle}
-            className="mb-2 text-normal text-gray-500 dark:text-white font-poppinsMedium"
+            className="mb-2 text-normal text-black dark:text-white font-poppinsMedium"
             testID={testID ? `${testID}-label` : undefined}
           >
             {label}
@@ -78,7 +78,7 @@ const CustomInput = React.forwardRef<TextInput, CustomInputProps>(
 
         <View
           style={containerStyle}
-          className={`flex-row relative items-center justify-between h-14 px-4 border rounded-lg ${
+          className={`flex-row relative items-center justify-between h-14 px-4  rounded-lg bg-lightBlue ${
             error ? "border-red-500" : "border-gray-400"
           }`}
         >

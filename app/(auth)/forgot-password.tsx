@@ -9,13 +9,11 @@ import { Formik } from "formik";
 import { StyledComponent } from "nativewind";
 import React, { useState } from "react";
 import {
-  Image,
-  Platform,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
+    Platform,
+    SafeAreaView,
+    ScrollView,
+    Text,
+    View
 } from "react-native";
 import { AlertNotificationRoot } from "react-native-alert-notification";
 import * as Yup from "yup";
@@ -30,9 +28,8 @@ const LoginSchema = Yup.object().shape({
     .required("You must accept the terms and conditions"),
 });
 
-const Login = () => {
+const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
-  const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
 
   const handleLogin = async (values: { email: string }) => {
     setLoading(true);
@@ -73,9 +70,22 @@ const Login = () => {
             }) => (
               <View className="flex-1 px-5 dark:bg-darkModeBgColor">
                 <View className="">
+                    <View className="w-full h-20 justify-center">
+                    <View className="w-10 h-10 rounded-full bg-lightBlue justify-center items-center">
+                    <StyledComponent
+                        component={Feather}
+                        name="arrow-left"
+                        className="text-black dark:text-white"
+                        size={18}
+                        onPress={() =>
+                          setFieldValue("consentGiven", !values.consentGiven)
+                        }
+                      />
+                    </View>
+                    </View>
                   <View className="justify-center items-center">
-                    <Text className="text-2xl text-gray-800 font-bold dark:text-white mt-16">
-                      Sign In 
+                    <Text className="text-2xl text-gray-800 font-bold dark:text-white">
+                      Forgot Password
                     </Text>
                   </View>
                   <View className="mt-6">
@@ -91,45 +101,13 @@ const Login = () => {
                       }
                     />
                   </View>
-
-                  <View className="mt-2">
-                    <CustomInput
-                      placeholder={"Enter Password"}
-                      label="Password"
-                      icon={
-                        <StyledComponent
-                          component={Feather}
-                          name={secureTextEntry ? "eye-off" : "eye"}
-                          className="text-gray-500 dark:text-white"
-                          size={16}
-                          onPress={() => setSecureTextEntry((prev) => !prev)}
-                        />
-                      }
-                      inputMode="email"
-                      value={values.email}
-                      onChangeText={handleChange("email")}
-                      onBlur={handleBlur("email")}
-                      error={
-                        touched.email && errors.email ? errors.email : undefined
-                      }
-                    />
-                  </View>
                 </View>
 
                 <View
                   className={`justify-end pb-6 ${
-                    Platform.OS === "android" ? "mt-6" : "mt-4"
+                    Platform.OS === "android" ? "mt-6" : ""
                   }`}
                 >
-                  {/* Consent Checkbox */}
-                  <TouchableOpacity onPress={() => {
-                    router.push("/(auth)/forgot-password")
-                  }} className="flex-row items-end justify-end mb-2">
-                    
-                      <Text className="font-bold underline text-primaryColor">
-                        Forgot Password
-                      </Text>
-                  </TouchableOpacity>
 
                   {touched.consentGiven && errors.consentGiven && (
                     <Text className="text-red-500 text-sm mb-4">
@@ -137,62 +115,27 @@ const Login = () => {
                     </Text>
                   )}
 
-                  <View className="w-full mt-8">
+                  <View className="w-full mt-4">
                     {loading ? (
                       <CustomLoadingOverlay />
                     ) : (
                       <CustomButton
-                        title="Sign In"
+                        title="Send Code"
                         buttonStyle="bg-primaryColor rounded-full h-16"
                         textStyle="text-white text-lg font-semibold"
-                        onPress={() => router.replace("/(auth)/register")}
+                        onPress={() => router.replace("/(auth)/create-new-password")}
                       />
                     )}
                   </View>
 
-                  <View className="w-full h-10 flex-row justify-between items-center mt-4">
-                    <View className="w-[44%] border border-gray-300 border-dashed"></View>
-                    <Text className="text-lg text-gray-900">Or</Text>
-                    <View className="w-[44%] border border-gray-300 border-dashed"></View>
-                  </View>
-
-                  <View className="w-full h-10 flex-row justify-center items-center mt-8">
-                    <View className="w-24 h-16 justify-center items-center bg-lightBlue rounded-lg mr-2">
-                      <Image
-                        source={require("../../assets/images/google.png")}
-                        className="w-7 h-7"
-                      />
-                    </View>
-                    <View className="w-24 h-16 justify-center items-center bg-lightBlue rounded-lg ml-2">
-                      <Image
-                        source={require("../../assets/images/facebook.png")}
-                        className="w-7 h-7"
-                      />
-                    </View>
-                  </View>
-
-                  <View className="h-20" />
                 </View>
               </View>
             )}
           </Formik>
         </ScrollView>
-
-        {/* Fixed bottom section */}
-        <View className="absolute bottom-0 left-0 right-0 bg-white dark:bg-darkModeBgColor px-5 py-8 dark:border-gray-700">
-        <Text className="text-gray-900 dark:text-white text-center">
-            Dont have an account?{" "}
-            <Text
-              className="text-primaryColor font-bold underline"
-              onPress={() => router.push("/(auth)/register")}
-            >
-              Signup
-            </Text>
-          </Text>
-        </View>
       </SafeAreaView>
     </AlertNotificationRoot>
   );
 };
 
-export default Login;
+export default ForgotPassword;

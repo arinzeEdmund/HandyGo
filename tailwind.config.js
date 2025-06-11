@@ -13,6 +13,7 @@ module.exports = {
       },
       colors: {
         primaryColor: "#55b535",
+        lightBlue: "#f6fafd",
       },
       fontSize: {
         normal: "16px",
