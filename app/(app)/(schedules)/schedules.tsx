@@ -1,12 +1,12 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const Receive = () => {
+const Schedules = () => {
   return (
     <View>
-      <Text>Receive</Text>
+      <Text>Schedules</Text>
     </View>
   );
 };
 
-export default Receive;
+export default Schedules;

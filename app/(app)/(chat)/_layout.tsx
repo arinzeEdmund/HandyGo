@@ -1,16 +1,16 @@
 import { Stack } from "expo-router";
 import React from "react";
 
-const ReceiveStackLayout = () => {
+const ChatStackLayout = () => {
   return (
     <Stack
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen name="receive" />
+      <Stack.Screen name="chat" />
     </Stack>
   );
 };
 
-export default ReceiveStackLayout;
+export default ChatStackLayout;

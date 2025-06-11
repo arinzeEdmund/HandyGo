@@ -163,7 +163,7 @@ const Register = () => {
                     ) : (
                       <CustomButton
                         title="Register"
-                        buttonStyle="bg-primaryColor rounded-full h-16"
+                        buttonStyle="bg-primaryColor rounded-full h-12"
                         textStyle="text-white text-lg font-semibold"
                         onPress={() => router.replace("/(auth)/login")}
                       />

@@ -60,7 +60,7 @@ const Index = () => {
                     });
                   }
                 }}
-                className="bg-primaryColor rounded-full h-14 w-40 justify-center items-center"
+                className="bg-primaryColor rounded-full h-12 w-40 justify-center items-center"
               >
                 <Text className="text-white text-lg font-semibold text-center">
                   Next
@@ -72,7 +72,7 @@ const Index = () => {
               onPress={() => {
                 router.replace("/(auth)/register");
               }}
-              className="bg-primaryColor rounded-full h-14 w-full justify-center items-center"
+              className="bg-primaryColor rounded-full h-12 w-full justify-center items-center"
             >
               <Text className="text-white text-lg font-semibold text-center">
                 Get Started

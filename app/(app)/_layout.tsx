@@ -1,7 +1,8 @@
+import ChatTabIcon from "@/components/navigationTabs/chat";
 import HomeTabIcon from "@/components/navigationTabs/home";
-import PayTabIcon from "@/components/navigationTabs/pay";
 import ProfileTabIcon from "@/components/navigationTabs/profile";
-import ReceiveTabIcon from "@/components/navigationTabs/receive";
+import ReviewsTabIcon from "@/components/navigationTabs/reviews";
+import SchedulesTabIcon from "@/components/navigationTabs/schedules";
 import { Tabs } from "expo-router";
 import React from "react";
 import { useColorScheme } from "react-native";
@@ -33,16 +34,23 @@ const AppLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="(receive)"
+        name="(schedules)"
         options={{
-          tabBarIcon: ({ focused }) => <ReceiveTabIcon focused={focused} />,
+          tabBarIcon: ({ focused }) => <SchedulesTabIcon focused={focused} />,
         }}
       />
 
       <Tabs.Screen
-        name="(pay)"
+        name="(reviews)"
         options={{
-          tabBarIcon: ({ focused }) => <PayTabIcon focused={focused} />,
+          tabBarIcon: ({ focused }) => <ReviewsTabIcon focused={focused} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="(chat)"
+        options={{
+          tabBarIcon: ({ focused }) => <ChatTabIcon focused={focused} />,
         }}
       />
 

@@ -7,12 +7,12 @@ import { Formik } from "formik";
 import { StyledComponent } from "nativewind";
 import React, { useEffect, useState } from "react";
 import {
-    Platform,
-    SafeAreaView,
-    ScrollView,
-    Text,
-    View,
-    useColorScheme,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+  useColorScheme,
 } from "react-native";
 import { AlertNotificationRoot } from "react-native-alert-notification";
 import { OtpInput } from "react-native-otp-entry";
@@ -154,7 +154,7 @@ const OtpVerification = () => {
                     ) : (
                       <CustomButton
                         title="Verify"
-                        buttonStyle="bg-primaryColor rounded-full h-16"
+                        buttonStyle="bg-primaryColor rounded-full h-12"
                         textStyle="text-white text-sm font-semibold"
                         onPress={() => router.replace("/(app)/(home)/home")}
                       />

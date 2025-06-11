@@ -146,7 +146,7 @@ const CreateNewPassword = () => {
                     ) : (
                       <CustomButton
                         title="Create New Password"
-                        buttonStyle="bg-primaryColor rounded-full h-16"
+                        buttonStyle="bg-primaryColor rounded-full h-12"
                         textStyle="text-white text-sm font-semibold"
                         onPress={() => router.replace("/otp-verification")}
                       />

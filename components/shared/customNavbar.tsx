@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 
 type CustomNavbarProps = {
   goBack?: () => void;
@@ -17,7 +17,7 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({
 
   return (
     <View
-      className="flex-row items-center justify-between dark:darkModeBgColor mb-8"
+      className="flex-row items-center justify-between dark:darkModeBgColor"
     >
       <View className="flex-row items-center justify-center">
         <TouchableOpacity onPress={goBack}>{left_icon}</TouchableOpacity>

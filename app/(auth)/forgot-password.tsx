@@ -9,11 +9,11 @@ import { Formik } from "formik";
 import { StyledComponent } from "nativewind";
 import React, { useState } from "react";
 import {
-    Platform,
-    SafeAreaView,
-    ScrollView,
-    Text,
-    View
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View
 } from "react-native";
 import { AlertNotificationRoot } from "react-native-alert-notification";
 import * as Yup from "yup";
@@ -121,7 +121,7 @@ const ForgotPassword = () => {
                     ) : (
                       <CustomButton
                         title="Send Code"
-                        buttonStyle="bg-primaryColor rounded-full h-16"
+                        buttonStyle="bg-primaryColor rounded-full h-12"
                         textStyle="text-white text-lg font-semibold"
                         onPress={() => router.replace("/(auth)/create-new-password")}
                       />

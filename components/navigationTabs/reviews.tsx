@@ -1,13 +1,13 @@
-import { Foundation } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { StyledComponent } from "nativewind";
 import React from "react";
 import { View } from "react-native";
 
-interface HomeTabIconProps {
+interface ReviewsTabIconProps {
   focused: boolean;
 }
 
-const HomeTabIcon: React.FC<HomeTabIconProps> = ({ focused }) => {
+const ReviewsTabIcon: React.FC<ReviewsTabIconProps> = ({ focused }) => {
   return (
     <View
       style={{
@@ -16,8 +16,8 @@ const HomeTabIcon: React.FC<HomeTabIconProps> = ({ focused }) => {
     >
       <View className="items-center">
         <StyledComponent
-          component={Foundation}
-          name={"home"}
+          component={FontAwesome}
+          name={"heart-o"}
           className={`${
             focused ? "text-[#55b535]" : "text-gray-500 dark:text-white"
           } `}
@@ -28,5 +28,5 @@ const HomeTabIcon: React.FC<HomeTabIconProps> = ({ focused }) => {
   );
 };
 
-export default HomeTabIcon;
+export default ReviewsTabIcon;
 

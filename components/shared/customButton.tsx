@@ -28,7 +28,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      className={`items-center justify-center h-14 flex-row ${buttonStyle}`}
+      className={`items-center justify-center h-12 flex-row ${buttonStyle}`}
       onPress={(e) => onPress?.(e)}
       disabled={loading}
       {...props}
