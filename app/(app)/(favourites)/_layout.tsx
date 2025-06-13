@@ -1,16 +1,16 @@
 import { Stack } from "expo-router";
 import React from "react";
 
-const ReviewStackLayout = () => {
+const FavouritesStackLayout = () => {
   return (
     <Stack
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen name="reviews" />
+      <Stack.Screen name="favourites" />
     </Stack>
   );
 };
 
-export default ReviewStackLayout;
+export default FavouritesStackLayout;

@@ -1,16 +1,16 @@
 import { Stack } from "expo-router";
 import React from "react";
 
-const SchedulStackLayout = () => {
+const BookingsStackLayout = () => {
   return (
     <Stack
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen name="schedules" />
+      <Stack.Screen name="bookings" />
     </Stack>
   );
 };
 
-export default SchedulStackLayout;
+export default BookingsStackLayout;

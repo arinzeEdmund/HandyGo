@@ -3,11 +3,11 @@ import { Entypo, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { StyledComponent } from "nativewind";
 import {
-    SafeAreaView,
-    ScrollView,
-    Text,
-    TouchableOpacity,
-    View,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const SelectAddress = () => {
@@ -46,11 +46,8 @@ const SelectAddress = () => {
             { label: "Parents House", selected: false },
             { label: "Farm House", selected: false },
           ].map((item, index) => (
-            <>
-              <View
-                key={index}
-                className="flex-row h-20 bg-lightBlue px-4 rounded-xl justify-between items-center mt-4"
-              >
+            <View key={index}>
+              <View className="flex-row h-20 bg-lightBlue px-4 rounded-xl justify-between items-center mt-4">
                 <View className="h-14 bg-lightBlue flex-row items-center w-[70%]">
                   <TouchableOpacity className="w-10 h-10 rounded-full bg-lightGreen justify-center items-center">
                     <StyledComponent
@@ -98,7 +95,7 @@ const SelectAddress = () => {
                   )}
                 </View>
               </View>
-            </>
+            </View>
           ))}
 
           {/* Room Selector */}

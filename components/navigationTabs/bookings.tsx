@@ -1,13 +1,13 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { StyledComponent } from "nativewind";
 import React from "react";
 import { View } from "react-native";
 
-interface ReviewsTabIconProps {
+interface BookingsTabIconProps {
   focused: boolean;
 }
 
-const ReviewsTabIcon: React.FC<ReviewsTabIconProps> = ({ focused }) => {
+const BookingsTabIcon: React.FC<BookingsTabIconProps> = ({ focused }) => {
   return (
     <View
       style={{
@@ -16,8 +16,8 @@ const ReviewsTabIcon: React.FC<ReviewsTabIconProps> = ({ focused }) => {
     >
       <View className="items-center">
         <StyledComponent
-          component={FontAwesome}
-          name={"heart-o"}
+          component={AntDesign}
+          name={"calendar"}
           className={`${
             focused ? "text-[#55b535]" : "text-gray-500 dark:text-white"
           } `}
@@ -28,5 +28,5 @@ const ReviewsTabIcon: React.FC<ReviewsTabIconProps> = ({ focused }) => {
   );
 };
 
-export default ReviewsTabIcon;
+export default BookingsTabIcon;
 

@@ -51,7 +51,9 @@ const Home = () => {
           }
           nav_icons={
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() => {
+                router.push("/notifications")
+              }}
               className="justify-center relative items-center bg-lightBlue w-10 h-10 rounded-full justify-center items-center rounded-full flex-row"
             >
               <View className=" flex  rounded-full justify-center items-center h-2 w-2 bg-red-500 z-10  absolute top-3 right-3 "></View>
@@ -146,7 +148,7 @@ const Home = () => {
 
         {/* Popular Services */}
         <View className="flex-row justify-between items-center mb-3 px-4">
-          <Text className="font-bold text-lg">Popular Services</Text>
+          <Text className="font-bold text-lg">Popular Servicers</Text>
           <Text className="text-primaryColor text-sm">View All</Text>
         </View>
 

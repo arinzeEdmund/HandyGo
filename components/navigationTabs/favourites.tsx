@@ -1,13 +1,13 @@
-import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { StyledComponent } from "nativewind";
 import React from "react";
 import { View } from "react-native";
 
-interface SchedulesTabIconProps {
+interface FavouritesTabIconProps {
   focused: boolean;
 }
 
-const SchedulesTabIcon: React.FC<SchedulesTabIconProps> = ({ focused }) => {
+const FavouritesTabIcon: React.FC<FavouritesTabIconProps> = ({ focused }) => {
   return (
     <View
       style={{
@@ -16,8 +16,8 @@ const SchedulesTabIcon: React.FC<SchedulesTabIconProps> = ({ focused }) => {
     >
       <View className="items-center">
         <StyledComponent
-          component={AntDesign}
-          name={"calendar"}
+          component={FontAwesome}
+          name={"heart-o"}
           className={`${
             focused ? "text-[#55b535]" : "text-gray-500 dark:text-white"
           } `}
@@ -28,5 +28,5 @@ const SchedulesTabIcon: React.FC<SchedulesTabIconProps> = ({ focused }) => {
   );
 };
 
-export default SchedulesTabIcon;
+export default FavouritesTabIcon;
 
