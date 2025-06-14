@@ -30,6 +30,7 @@ export const favourites = [
 ];
 
 
+
 export const favouritesCategories = [
   "All",
   "Cleaning",

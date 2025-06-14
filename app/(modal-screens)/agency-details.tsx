@@ -1,22 +1,35 @@
+import CustomButton from "@/components/shared/customButton";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import * as WebBrowser from "expo-web-browser";
 import { StyledComponent } from "nativewind";
 import React from "react";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+    Image,
+    Linking,
+    ScrollView,
+    Share,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
 import { Avatar } from "react-native-paper";
 
-const CategoryDetails = () => {
+const AgencyDetails = () => {
   return (
-    <ScrollView className="flex-1 bg-white dark:bg-darkModeBgColor">
+    <View className="flex-1 bg-white dark:bg-darkModeBgColor">
       {/* Header Image */}
       <View className="relative">
         <Image
           source={{
-            uri: "https://img.freepik.com/premium-photo/beautiful-woman-smiles-when-washing-dishes-home_353017-2818.jpg?ga=GA1.1.1622344078.1749644231&semt=ais_hybrid&w=740",
+            uri: "https://media.istockphoto.com/id/1194917931/photo/cheerful-young-man-part-of-a-cleaning-team-holding-a-tray-with-cleaning-products-all-smiling.jpg?s=612x612&w=0&k=20&c=HKDncUkMlkBInvU892q2SonzUXkWhol9K0VmrtDWCgo=",
           }}
           className="w-full h-60"
         />
-        <TouchableOpacity  onPress={() => router.back()} className="absolute top-12 left-4 w-10 h-10 rounded-full bg-lightBlue justify-center items-center">
+        <TouchableOpacity
+          onPress={() => router.back()}
+          className="absolute top-12 left-4 w-10 h-10 rounded-full bg-lightBlue justify-center items-center"
+        >
           <StyledComponent
             component={Feather}
             name="arrow-left"
@@ -41,7 +54,7 @@ const CategoryDetails = () => {
         <View className="flex-row justify-between items-center">
           <View>
             <Text className="text-xl font-bold text-black font-poppinsBold">
-              Home Cleaning
+              CleanAll & Sons Limited
             </Text>
             <Text className="text-gray-500 mt-1 font-poppinsRegular">
               Robert Kelvin |{" "}
@@ -54,28 +67,56 @@ const CategoryDetails = () => {
           </TouchableOpacity>
         </View>
 
+    <ScrollView className="bg-white dark:bg-darkModeBgColor" showsVerticalScrollIndicator={false}>
+
+   
+
         {/* Contact Icons */}
         <View className="flex-row justify-between mt-6 px-2">
           {[
             { icon: "globe", label: "Website" },
             { icon: "phone", label: "Call" },
-            { icon: "map-pin", label: "Location" },
+            { icon: "message-circle", label: "Chat" },
             { icon: "share-2", label: "Share" },
           ].map((item, index) => (
-            <View key={index} className="items-center">
+            <TouchableOpacity
+              onPress={async () => {
+                if (item.label === "Chat") {
+                  router.push("/chat-screen");
+                }
+
+                if (item.label === "Website") {
+                  await WebBrowser.openBrowserAsync("https://www.apple.com");
+                }
+
+                if (item.label === "Call") {
+                  Linking.openURL("tel:+13605836065");
+                }
+
+                if (item.label === "Share") {
+                  await Share.share({
+                    message:
+                      "Check out this awesome service: myapp://details-screen",
+                    url: "myapp://details-screen",
+                    title: "Details Screen",
+                  });
+                }
+              }}
+              key={index}
+              className="items-center"
+            >
               <View className="bg-lightGreen p-4 rounded-full mb-1">
                 <StyledComponent
                   component={Feather}
                   name={item.icon as any}
                   className="text-primaryColor dark:text-white"
                   size={20}
-                  onPress={() => {}}
                 />
               </View>
               <Text className="text-xs text-black font-poppinsRegular">
                 {item.label}
               </Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
 
@@ -115,7 +156,10 @@ const CategoryDetails = () => {
           <Text className="text-black font-poppinsSemiBold text-base">
             Reviews
           </Text>
-          <Text className="text-green-500 text-sm font-poppinsSemiBold">
+          <Text
+            className="text-primaryColor text-sm font-poppinsSemiBold"
+            onPress={() => router.push("/all-reviews")}
+          >
             View All
           </Text>
         </View>
@@ -175,13 +219,19 @@ const CategoryDetails = () => {
               /hour
             </Text>
           </Text>
-          <TouchableOpacity className="bg-primaryColor px-6 py-3 rounded-full">
-            <Text className="text-white font-poppinsSemiBold">Book Now</Text>
-          </TouchableOpacity>
+          <CustomButton
+            title="Book Now"
+            buttonStyle="bg-primaryColor rounded-full h-12 w-32"
+            textStyle="text-white text-sm font-semibold"
+            onPress={() => {
+              router.push("/booking-form");
+            }}
+          />
         </View>
+        </ScrollView>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
-export default CategoryDetails;
+export default AgencyDetails;

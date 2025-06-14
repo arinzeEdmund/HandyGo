@@ -29,8 +29,13 @@ const Home = () => {
         <CustomNavbar
           goBack={() => router.push("/(app)/(profile)/profile")}
           left_icon={
-            <View className="justify-center items-center flex-row">
-              <TouchableOpacity className="w-10 h-10 rounded-full">
+            <TouchableOpacity
+              onPress={() => {
+                router.push("/profile");
+              }}
+              className="justify-center items-center flex-row"
+            >
+              <View className="w-10 h-10 rounded-full">
                 <Image
                   source={{
                     uri: "https://cdn.pixabay.com/photo/2018/07/28/09/23/woman-3567600_1280.jpg",
@@ -38,7 +43,7 @@ const Home = () => {
                   resizeMode="cover"
                   style={{ width: "100%", height: "100%", borderRadius: 100 }}
                 />
-              </TouchableOpacity>
+              </View>
               <View className="ml-3">
                 <Text className="font-poppinsLight dark:text-white text-[12px]">
                   Arinze Edmund
@@ -47,12 +52,12 @@ const Home = () => {
                   London, UK
                 </Text>
               </View>
-            </View>
+            </TouchableOpacity>
           }
           nav_icons={
             <TouchableOpacity
               onPress={() => {
-                router.push("/notifications")
+                router.push("/notifications");
               }}
               className="justify-center relative items-center bg-lightBlue w-10 h-10 rounded-full justify-center items-center rounded-full flex-row"
             >
@@ -120,36 +125,39 @@ const Home = () => {
           </View>
         </View>
 
-        {/* Pagination Indicator */}
-        <View className="flex-row justify-center my-4">
-          <View className="w-2 h-2 bg-green-500 rounded-full mx-1" />
-          <View className="w-2 h-2 bg-gray-300 rounded-full mx-1" />
-          <View className="w-2 h-2 bg-gray-300 rounded-full mx-1" />
-        </View>
-
         {/* Categories */}
-        <Text className="font-bold text-lg mb-3 ml-4">Categories</Text>
+        <Text className="font-bold text-lg mb-3 ml-4 mt-4">Categories</Text>
         <View className="flex-row justify-between mb-6 px-8">
           {Categories.map((item, index) => (
-            <View key={index} className="items-center">
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                router.push("/categories");
+              }}
+              className="items-center"
+            >
               <View className="bg-lightGreen p-4 rounded-full mb-1">
                 <StyledComponent
                   component={FontAwesome5}
                   name={item.icon as any}
                   className="text-primaryColor"
                   size={20}
-                  onPress={() => {}}
                 />
               </View>
               <Text className="text-xs text-black">{item.label}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
 
         {/* Popular Services */}
         <View className="flex-row justify-between items-center mb-3 px-4">
           <Text className="font-bold text-lg">Popular Servicers</Text>
-          <Text className="text-primaryColor text-sm">View All</Text>
+          <Text
+            className="text-primaryColor text-sm"
+            onPress={() => router.push("/popular-services")}
+          >
+            View All
+          </Text>
         </View>
 
         <ScrollView
@@ -161,7 +169,7 @@ const Home = () => {
             <TouchableOpacity
               key={index}
               onPress={() => {
-                router.push("/(modal-screens)/category-details");
+                router.push("/(modal-screens)/user-details");
               }}
             >
               <Image
@@ -176,7 +184,12 @@ const Home = () => {
         {/* Popular Services */}
         <View className="flex-row justify-between items-center mb-3 mt-8 px-4">
           <Text className="font-bold text-lg">Popular Agencies</Text>
-          <Text className="text-primaryColor text-sm">View All</Text>
+          <Text
+            className="text-primaryColor text-sm"
+            onPress={() => router.push("/popular-agencies")}
+          >
+            View All
+          </Text>
         </View>
 
         <ScrollView
@@ -185,12 +198,18 @@ const Home = () => {
           className="ml-4"
         >
           {Companies.map((service, index) => (
-            <Image
+            <TouchableOpacity
               key={index}
-              source={{ uri: service.img }}
-              className="w-40 h-40 rounded-lg mr-4"
-              resizeMode="cover"
-            />
+              onPress={() => {
+                router.push("/(modal-screens)/agency-details");
+              }}
+            >
+              <Image
+                source={{ uri: service.img }}
+                className="w-40 h-40 rounded-lg mr-4"
+                resizeMode="cover"
+              />
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </ScrollView>

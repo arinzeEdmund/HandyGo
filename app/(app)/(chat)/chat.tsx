@@ -74,11 +74,17 @@ const Chat = () => {
                   )}
                 </View>
                 <View>
-                  <Text className="font-poppinsSemiBold text-base">{msg.name}</Text>
-                  <Text className="text-gray-400 text-sm font-poppinsLight">{msg.text}</Text>
+                  <Text className="font-poppinsSemiBold text-base">
+                    {msg.name}
+                  </Text>
+                  <Text className="text-gray-400 text-sm font-poppinsLight">
+                    {msg.text}
+                  </Text>
                 </View>
               </View>
-              <Text className="text-gray-400 text-xs font-poppinsLight">{msg.time}</Text>
+              <Text className="text-gray-400 text-xs font-poppinsLight">
+                {msg.time}
+              </Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
